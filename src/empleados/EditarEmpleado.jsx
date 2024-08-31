@@ -34,7 +34,7 @@ export default function EditarEmpleado() {
 
     const onSubmit = async (e) => {
         e.preventDefault();
-        await axios.post(urlBase, empleado);
+        await axios.put(`${urlBase}/${id}`, empleado);
         navegacion('/');
     }
 
@@ -56,7 +56,7 @@ export default function EditarEmpleado() {
                     <input type="number" step="any" className="form-control" id="sueldo" name="sueldo" required={true} value={sueldo} onChange={(e)=>onInputChange(e)}/>
                 </div>
                 <div className='text-center'>
-                    <button type="submit" className="btn btn-warning btn-sm me-3">Agregar</button>
+                    <button type="submit" className="btn btn-warning btn-sm me-3">Editar</button>
                     <a href="/" className='btn btn-danger btn-sm'>Regresar</a>
                 </div>
             </form>
