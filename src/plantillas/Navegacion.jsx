@@ -1,8 +1,9 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 export default function Navegacion() {
   return (
-    <div classNameName='container'>
+    <div className='container'>
         <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
   <div className="container-fluid">
     <a className="navbar-brand" href="/">Sistema de recursos humanos</a>
@@ -12,10 +13,10 @@ export default function Navegacion() {
     <div className="collapse navbar-collapse" id="navbarNav">
       <ul className="navbar-nav">
         <li className="nav-item">
-          <a className="nav-link active" aria-current="page" href="/">Inicio</a>
+          <Link className="nav-link active" aria-current="page" to="/">Inicio</Link>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="/agregar">Agregar empleado</a>
+          <Link className="nav-link" to="/agregar">Agregar empleado</Link>
         </li>
       </ul>
     </div>
