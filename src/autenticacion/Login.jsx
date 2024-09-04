@@ -6,7 +6,9 @@ export default function Login() {
 
     let navegacion = useNavigate();
 
-    const urlBase = "https://crud-empleados-hj05.onrender.com/auth/login"
+    // const urlBase = "http://localhost:8080/auth/login" url para pruebas en desarrollo
+
+    const urlBase = "https://crud-empleados-hj05.onrender.com/auth/login" //url en produccion
 
     const [user, setUser] = useState({
         username:"",
