@@ -1,11 +1,13 @@
-import axios from 'axios';
+import axiosPrivate from '../AxiosPrivate';
 import React, { useEffect, useState } from 'react'
 import { NumericFormat } from 'react-number-format';
 import { Link } from 'react-router-dom';
 
 export default function ListadoEmpleados() {
 
-    const urlBase= "http://localhost:8080/rh-app/empleados";
+    // const urlBase= "http://localhost:8080/rh-app/empleados"; url para pruebas en desarrollo
+
+    const urlBase = "https://crud-empleados-hj05.onrender.com/rh-app/empleados" //url en produccion
 
     const [empleados, setEmpleados] = useState([]);
 
@@ -14,14 +16,12 @@ export default function ListadoEmpleados() {
     }, []);
 
     const cargarEmpleados = async ()=>{
-        const resultado = await axios.get(urlBase);
-        //console.log("Resultado de cargar empleados");
-        //console.log(resultado.data);
+        const resultado = await axiosPrivate.get(urlBase);
         setEmpleados(resultado.data);
     }
 
     const eliminarEmpleado = async (id)=>{
-        await axios.delete(`${urlBase}/${id}`);
+        await axiosPrivate.delete(`${urlBase}/${id}`);
         cargarEmpleados();
     }
 

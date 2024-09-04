@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axiosPrivate from '../AxiosPrivate';
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 
@@ -6,7 +6,9 @@ export default function EditarEmpleado() {
 
     let navegacion = useNavigate();
     
-    const urlBase = "http://localhost:8080/rh-app/empleados";
+    // const urlBase = "http://localhost:8080/rh-app/empleados"; url para pruebas en desarrollo
+
+    const urlBase = "https://crud-empleados-hj05.onrender.com/rh-app/empleados" //url en produccion
 
     const {id} = useParams();
 
@@ -23,7 +25,7 @@ export default function EditarEmpleado() {
     },[]);
 
     const cargarEmpleado = async () =>{
-        const resultado = await axios.get(`${urlBase}/${id}`);
+        const resultado = await axiosPrivate.get(`${urlBase}/${id}`);
         setEmpleado(resultado.data);
     }
     
@@ -34,7 +36,7 @@ export default function EditarEmpleado() {
 
     const onSubmit = async (e) => {
         e.preventDefault();
-        await axios.put(`${urlBase}/${id}`, empleado);
+        await axiosPrivate.put(`${urlBase}/${id}`, empleado);
         navegacion('/');
     }
 
@@ -57,7 +59,7 @@ export default function EditarEmpleado() {
                 </div>
                 <div className='text-center'>
                     <button type="submit" className="btn btn-warning btn-sm me-3">Editar</button>
-                    <a href="/" className='btn btn-danger btn-sm'>Regresar</a>
+                    <a href="/empleados" className='btn btn-danger btn-sm'>Regresar</a>
                 </div>
             </form>
         </div>

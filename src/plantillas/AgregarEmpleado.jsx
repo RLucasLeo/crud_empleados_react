@@ -1,9 +1,15 @@
-import axios from 'axios';
+import axiosPrivate from '../AxiosPrivate';
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
 export default function AgregarEmpleado() {
+
+    // const urlBase = "http://localhost:8080/rh-app/empleados"; url para pruebas en desarrollo
+
+    const urlBase = "https://crud-empleados-hj05.onrender.com/rh-app/empleados" //url en produccion
+
     let navegacion = useNavigate();
+
     const[empleado, setEmpleado] = useState({
         nombre:"",
         departamento:"",
@@ -19,8 +25,7 @@ export default function AgregarEmpleado() {
 
     const onSubmit = async (e) => {
         e.preventDefault();
-        const urlBase = "http://localhost:8080/rh-app/empleados";
-        await axios.post(urlBase, empleado);
+        await axiosPrivate.post(urlBase, empleado);
         navegacion('/');
     }
 
